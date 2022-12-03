@@ -1,3 +1,5 @@
+# вычисляет паллиндром слова
+
 def is_palindrome(word):
     word_ = ''
     for i in word:

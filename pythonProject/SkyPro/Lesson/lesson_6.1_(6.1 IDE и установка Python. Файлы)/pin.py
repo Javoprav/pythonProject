@@ -1,9 +1,16 @@
-def check_pin(pin):
+def check_pin(pin):      # проверка пин кода
     if not pin.isdigit():
       return False
     if len(pin) != 4:
       return False
     return True
+
+#  или так
+
+'''def check_pin(pin):
+    if len(pin) == 4 and pin.isdigit():    
+        return True
+    return False'''
 
         
 try:
