@@ -1,3 +1,48 @@
+#named function
+def polynomial(x):
+    return x**2 + 5*x + 4
+print(polynomial(-4))
+
+#lambda лямбда
+print((lambda x: x**2 + 5*x + 4) (-4))
+# лямда в переменной
+double = lambda x: x * 2
+print(double(7))
+
+
+# map
+def add_five(x):
+  return x + 5
+#
+nums = [11, 22, 33, 44, 55]
+result = list(map(add_five, nums))
+print(result)
+
+# map + lambda
+nums = [11, 22, 33, 44, 55]
+result = list(map(lambda x: x+5, nums))
+print(result)
+
+
+strip() # удаляет символ
+
+'''Функция rename()
+Функция rename() используется для переименовывания файлов в Python. Для ее использования сперва нужно импортировать модуль os.
+
+Синтаксис следующий.
+'''
+import os
+# os.rename(src,dest)
+
+'''
+src = файл, который нужно переименовать
+dest = новое имя файла
+Пример
+'''
+import os
+# переименование xyz.txt в abc.txt
+os.rename("xyz.txt","abc.txt")
+
 data = student_data.rstrip('\n').split(':') # rstrip() удаляет указанный символ справа
 # пустой strip удаляет последний символ,
 
