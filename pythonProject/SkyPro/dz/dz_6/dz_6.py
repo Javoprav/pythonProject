@@ -1,85 +1,73 @@
-#import os
+'''импорт модулей и создание переменных'''
 import random
 
-list_correct_word = []
+ball = 0
 
-file_name = 'words.txt'
-with open(file_name, "r") as file:
-    for line in file.readlines():
-        list_correct_word.append(line.replace('\n', ''))
-# print(list_correct_word)
+'''функция чтения из файла со словами'''
 
-def get_word():
-    items = random.sample(list_correct_word, 1)
-    result = ''.join(items)
-    return result
 
-'''def correct_word():
+def correct_word():
+    list_correct_word = []
     file_name = 'words.txt'
-    with open(file_name, "r") as file:
-     for line in file.readlines():
-        correct_word = "".join(line)
-        return correct_word.lower()'''
-'''def shuffling_letters(word):
-    filename = 'words.txt'
-    with open(filename, "r") as file_2:
-     for line in file_2.readlines():
-        word_as_list = list(line)
-        random.shuffle(word_as_list)
-        word_ = " ".join(word_as_list).replace(' ', '')
-        return word_'''
+    with open(file_name, "r", encoding="utf-8") as file:
+        for line in file.readlines():
+            list_correct_word.append(line.replace('\n', ''))
+    items = random.sample(list_correct_word, 1)
+    items_str = ''.join(items)
+    return items_str
+
+
+"""функция шифровки слова"""
+
+
 def shuffling_letters(word):
     word_as_list = list(word)
     random.shuffle(word_as_list)
     word_ = " ".join(word_as_list).replace(' ', '')
     return word_
 
-user_name = input('Введите ваше имя: ')
 
-game_cycle = 0
-while game_cycle < 4:
-    ans_1 = get_word()
-    question_1 = shuffling_letters(ans_1).replace('\n', '')
-    print(f'Угадайте слово: {question_1}')
-    print(ans_1)  ########################
-    user_input_1 = input().lower()
-    if user_input_1 == ans_1:
-        print('Верно! Вы получаете 10 очков.')
-        # answers.append(True)
-        game_cycle += 1
-    else:
-        print(f'Неверно! Верный ответ – {ans_1}.')
-        # answers.append(False)
-        game_cycle += 1
+"""запись статистики в файл"""
 
 
-'''game_cycle = 0
-while game_cycle < 4:
-    ans_1 = correct_word().replace('\n', '')
-    question_1 = shuffling_letters(ans_1).replace('\n', '')
-    print(f'Угадайте слово: {question_1}')
-    print(ans_1)  ########################
-    user_input_1 = input().lower()
-    if user_input_1 == ans_1:
-        print('Верно! Вы получаете 10 очков.')
-        # answers.append(True)
-        game_cycle += 1
-    else:
-        print(f'Неверно! Верный ответ – {ans_1}.')
-        # answers.append(False)
-        game_cycle += 1'''
+def write_stat():
+    with open('history.txt', 'a', encoding="utf-8") as file_w:
+        file_w.write(f"{user_name} {ball}\n")
 
-# print(f'Угадайте слово: {shuffling_letters()}')
 
-'''def read_top_players(name_file):
+'''вывод статистики'''
+
+
+def total_g():
+    total_games = 0
     max_score = 0
-
-    with open(name_file, 'r', encoding="utf-8") as file:
-        total_games = len(file.readlines())
-        for line in file.readlines():
-            score = int(line.split(" ")[1])
+    with open('history.txt', 'r', encoding="utf-8") as file_wr:
+        all_games = file_wr.readlines()
+        total_games = len(all_games)
+        for line in all_games:
+            score = int(line.split(" ")[1])  ######## берет 2 слово из строки
             if score > max_score:
                 max_score = score
+    return f'Всего игр сыграно: {total_games} \nМаксимальный рекорд: {max_score}'
 
-    return f"Всего игр сыграно: {total_games}\n" \
-           f"Максимальный рекорд: {max_score}"'''
+
+user_name = input('Введите ваше имя: ')
+
+"""основной цикл игры"""
+game_cycle = 0
+while game_cycle < 4:
+    ans_1 = correct_word()
+    question_1 = shuffling_letters(ans_1).replace('\n', '')
+    print(f'Угадайте слово: {question_1}')
+    user_input_1 = input().lower()
+    if user_input_1 == ans_1:
+        print('Верно! Вы получаете 10 очков.')
+        game_cycle += 1
+        ball += 10
+    else:
+        print(f'Неверно! Верный ответ – {ans_1}.')
+        game_cycle += 1
+        ball -= 10
+
+write_stat()
+print(total_g())
