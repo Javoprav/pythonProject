@@ -97,7 +97,7 @@ print(read_history(history_txt))
 
 
 
-############################### utils.py
+############################### main_7.py
 import random
 
 def load_words(filename):

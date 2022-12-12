@@ -120,7 +120,7 @@ Pycharm IDE для профессиональной разработки на Py
 
 В открывшемся окне нужно выбрать “New project”. 
 В поле location выбираете директорию в которой будет создан ваш проект. И нажимаете “Create”. 
-Теперь pycharm создаст ваш проект и первый файл main.py. 
+Теперь pycharm создаст ваш проект и первый файл main_7.py.
 После того как открылся редактор в маленьком окошке нажимаете “Close”.
 
 ### Обзор редактора
@@ -211,7 +211,7 @@ with open('text.txt', 'r') as f:
 # Мехмен Пашар	
 # Мен Кхалид
 
-# Содержимое файла main.py
+# Содержимое файла main_7.py
 
 
 print(f"Гостей: {guests_count}")
@@ -276,7 +276,7 @@ user_institution = input("Где?")
 ```
 """
 
-# main.py
+# main_7.py
 
 with open('students.txt', 'r') as f:
 
@@ -311,9 +311,9 @@ with open('students.txt', 'r') as f:
 Мука ржаная кг:1:100
 Шоколад шт:1:100
 
-# main.py
+# main_7.py
 
-# main.py
+# main_7.py
 
 with open('list.txt', 'r') as f:
 
@@ -344,7 +344,7 @@ with open('list.txt', 'r') as f:
 # Кисани Белден:java
 # Джасмаль Лид:go
 
-#main.py
+#main_7.py
 with open('students.txt', 'r') as f:
 
     for line in f:
@@ -367,7 +367,7 @@ with open('main.py') as f:
 > print(“Я вредный код).
 """
 
-# Код программы main.py
+# Код программы main_7.py
 
 with open('students.txt', 'r') as f:
     for line in f:
